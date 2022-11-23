@@ -26,30 +26,8 @@ function average(array) {
   for (let index = 0; index < array.length; index += 1) {
     soma += array[index];
   }
-  // media = soma / array.length;   
-  // return media; 
-  // console.log(Math.round(soma / array.length));
   return Math.round(soma / array.length);
 }
-// const average = (array) => {
-//   for (let index = 0; index < array.length; index += 1) {
-//     if (typeof array[index] !== 'number') {
-//       console.log('undefined');
-//       return;
-//     }
-//     if (array.length === 0) {
-//       console.log('undefined');
-//       return;
-//     }
-//   }
-//   let soma = 0;
-//   for (let index = 0; index < array.length; index += 1) {
-//     soma += array[index];
-//   }
-//   // media = soma / array.length;   
-//   // return media; 
-//   console.log(Math.round(soma / array.length));
-// };
 // average([3, 4, 5]);
 // average([0, 0, 0, 0, 0, 0, 0]);
 // average([1, 2, 3]);
