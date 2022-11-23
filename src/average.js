@@ -10,15 +10,58 @@
     - average([1, 1]) // Retorno: 1;
     - average([1, '2']) // Retorno: undefined;
 */
-let soma = 0;
-const average = (array) => {
-  for (let index = 0; index < array.length; index +=1) {
-    soma = soma + array[index];
-      }
-console.log(soma);
-}
-console.log(average([2, 2 ,2]));
 
-// adicione seu código aqui
+function average(array) {
+  if (array.length === 0) {
+    console.log('undefined');
+    return;
+  }
+  for (let index = 0; index < array.length; index += 1) {
+    if (typeof array[index] !== 'number') {
+      console.log('undefined');
+      return;
+    }
+  }
+  let soma = 0;
+  for (let index = 0; index < array.length; index += 1) {
+    soma += array[index];
+  }
+  // media = soma / array.length;   
+  // return media; 
+  // console.log(Math.round(soma / array.length));
+  return Math.round(soma / array.length);
+}
+// const average = (array) => {
+//   for (let index = 0; index < array.length; index += 1) {
+//     if (typeof array[index] !== 'number') {
+//       console.log('undefined');
+//       return;
+//     }
+//     if (array.length === 0) {
+//       console.log('undefined');
+//       return;
+//     }
+//   }
+//   let soma = 0;
+//   for (let index = 0; index < array.length; index += 1) {
+//     soma += array[index];
+//   }
+//   // media = soma / array.length;   
+//   // return media; 
+//   console.log(Math.round(soma / array.length));
+// };
+// average([3, 4, 5]);
+// average([0, 0, 0, 0, 0, 0, 0]);
+// average([1, 2, 3]);
+// average([0, 0, 0, 0, 0, 0, 1]);
+// average([47, 63, 122]);
+// average([-11, 2, 5]);
+// average([-11, -5, 2]);
+
+// average([1, 2, 3, '4', 5]);
+// average(['um', 'dois', 'tres']);
+// average([1, 2, '3']);
+// average([' ']);
+// average([]);
 
 module.exports = average;
