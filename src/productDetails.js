@@ -45,7 +45,6 @@ const productDetails = (firstProduct, secondProduct) => [
 // const teste = productDetails();
 // console.log(teste);
 // console.log(teste[0].details.productId);
-
 // console.log(productDetails('mascara', 'luva'));
 // console.log(Array.isArray(productDetails('mascara', 'luva')));
 // console.log(productDetails('mascara', 'luva').length);
@@ -54,5 +53,3 @@ const productDetails = (firstProduct, secondProduct) => [
 // console.log(productDetails('mascara', 'luva')[0].details.productId.substr(-3));
 
 module.exports = productDetails;
-
-
