@@ -24,7 +24,7 @@ const createStudent = (nome) => {
         return 'Eita pessoa boa!';
   };
   pessoa.name = nome;
-  // console.log(pessoa);
+    // console.log(pessoa);
   return pessoa;
 };
 
