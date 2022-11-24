@@ -35,11 +35,17 @@
 */
 
 const calculator = (number1, number2) => {
-let results = {};
-results.sum = number1 + number2;
-results.mult = number1 * number2;
-results.div = Math.floor( number1 / number2 );
-results.sub = number1 - number2;
+let results = { sum: number1 + number2,
+                mult: number1 * number2,
+                div: Math.floor(number1 / number2),
+                sub: number1 - number2,
+};
+
+// let results = {};
+// results.sum = number1 + number2;
+// results.mult = number1 * number2;
+// results.div = Math.floor(number1 / number2);
+// results.sub = number1 - number2;
 
 return results;
 // console.log(results);
@@ -49,15 +55,15 @@ return results;
 // calculator(-10, 5);
 // console.log(Object.keys(calculator()));
 const arrayGenerator = (type, object) => {
-  if(type === 'keys') {
+  if (type === 'keys') {
     console.log(Object.keys(object));
     return Object.keys(object);
   }
-  if(type === 'values') {
+  if (type === 'values') {
     console.log(Object.values(object));
     return Object.values(object);
   }
-  if(type === 'entries') {
+  if (type === 'entries') {
     console.log(Object.entries(object));
     return Object.entries(object);
   }
@@ -65,6 +71,5 @@ const arrayGenerator = (type, object) => {
 // arrayGenerator('entries',{ sum: 4, mult: 3, div: 0, sub: -2 })
 // { sum: 0, mult: 0, div: NaN, sub: 0 }
 // { sum: -5, mult: -50, div: -2, sub: -15 }
-
 
 module.exports = { calculator, arrayGenerator };
