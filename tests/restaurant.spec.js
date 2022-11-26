@@ -36,18 +36,28 @@ const createMenu = require('../src/restaurant');
 
 describe('10 - Implemente a função `createMenu`, bem como seus casos de teste', () => {
   it('Verifica se a função `createMenu` tem o comportamento esperado', () => {
-    fail('Teste vazio!');
+    // fail('Teste vazio!');
     // 1: Verifique se função `createMenu()` retorna um objeto que possui a chave `fetchMenu`, a qual tem como valor uma função.
-    expect()
+    const esperado = createMenu({ food: {}, drink: {} });
+    expect(Object.keys(esperado)).toContain('fetchMenu');
 
     // 2: Verifique se 'objetoRetornado.fetchMenu()' retorna um objeto cujas chaves são somente `food` e `drink`, 
     // considerando que a função createMenu() foi chamada com o objeto: `{ food: {}, drink: {} }`.
-
+    const menuDoDia = createMenu({ food: {}, drink: {} });
+    const result = ['food', 'drink'];
+    expect(Object.keys(objetoRetornado.fetchMenu(menuDoDia))).toEqual(result);
     // 3: Verifique se o menu passado pra função createMenu() é idêntico ao menu recuperado pela função 'objetoRetornado.fetchMenu()'.
+    const menuDoDia2 = {
+      food: {'coxinha': 3.90, 'sanduiche': 9.90},
+      drinks: {'agua': 3.90, 'cerveja': 6.90}
+    };
+    expect(createMenu(menuDoDia2).objetoRetornado.fetchMenu()).toEqual(menuDoDia2);
+
 
     // 4: Faça a implementação do item 4 do README no arquivo src/restaurant.js.
 
     // 5: Verifique se 'objetoRetornado.consumption', após a criação do menu, retorna um array vazio.
+
 
     // 6: Faça a implementação do item 6 do README no arquivo src/restaurant.js.
     
