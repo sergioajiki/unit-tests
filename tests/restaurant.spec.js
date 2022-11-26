@@ -33,6 +33,10 @@ const createMenu = require('../src/restaurant');
 
   IMPORTANTE: FAÇA OS TESTES E IMPLEMENTAÇÕES DE ACORDO COM A SEQUÊNCIA INDICADA NO README DO PROJETO!
 */
+const menuDoDia2 = {
+      food: {'coxinha': 3.90, 'sanduiche': 9.90},
+      drinks: {'agua': 3.90, 'cerveja': 6.90}
+    };
 
 describe('10 - Implemente a função `createMenu`, bem como seus casos de teste', () => {
   it('Verifica se a função `createMenu` tem o comportamento esperado', () => {
@@ -50,10 +54,7 @@ describe('10 - Implemente a função `createMenu`, bem como seus casos de teste'
     expect(Object.keys(menuDoDia.fetchMenu())).toEqual(result);
 
     // 3: Verifique se o menu passado pra função createMenu() é idêntico ao menu recuperado pela função 'objetoRetornado.fetchMenu()'.
-    const menuDoDia2 = {
-      food: {'coxinha': 3.90, 'sanduiche': 9.90},
-      drinks: {'agua': 3.90, 'cerveja': 6.90}
-    };
+    
     expect(createMenu(menuDoDia2).fetchMenu()).toEqual(menuDoDia2);
 
 
@@ -61,6 +62,7 @@ describe('10 - Implemente a função `createMenu`, bem como seus casos de teste'
 
     // 5: Verifique se 'objetoRetornado.consumption', após a criação do menu, retorna um array vazio.
 
+    expect(createMenu(menuDoDia2).consumption).toEqual([]);
 
     // 6: Faça a implementação do item 6 do README no arquivo src/restaurant.js.
     

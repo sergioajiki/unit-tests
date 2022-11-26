@@ -44,7 +44,7 @@
 const createMenu = (objetoPassadoPorParametro) => {
     let objetoRetornado = {
     fetchMenu: () => objetoPassadoPorParametro,
-    // consumption: [],
+    consumption: [],
     // order: () => {
     //   objetoRetornado.consumption.push(Object.keys(objetoPassadoPorParametro));
     // },
