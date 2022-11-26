@@ -42,8 +42,7 @@
 //  { fetchMenu: () => objetoPassadoPorParametro }.
 
 const createMenu = (objetoPassadoPorParametro) => {
-  // console.log(objetoPassadoPorParametro);
-  let objetoRetornado = {
+    let objetoRetornado = {
     fetchMenu: () => objetoPassadoPorParametro,
     // consumption: [],
     // order: () => {
@@ -51,20 +50,17 @@ const createMenu = (objetoPassadoPorParametro) => {
     // },
     // pay: '',
   };
-  console.log(objetoRetornado.fetchMenu());
-  console.log(Object.keys(objetoRetornado));
-  return objetoRetornado;
-  
-  // console.log(objetoRetornado);
-  // console.log(Object.keys(objetoPassadoPorParametro));
+  // console.log(objetoRetornado.fetchMenu());
+  console.log(Object.keys(objetoRetornado.fetchMenu()));
+  // console.log(Object.keys(objetoRetornado));
+  return objetoRetornado;  
 };
-
+createMenu({ food: {}, drink: {} });
 const menuDoDia2 = {
   food: { coxinha: 3.90, sanduiche: 9.90 },
-  drinks: { agua: 3.90, cerveja: 6.90 },
+  drink: { agua: 3.90, cerveja: 6.90 },
 };
 createMenu(menuDoDia2);
-createMenu({ food: {}, drink: {} });
 
 // Faça o item 5 no arquivo tests/restaurant.spec.js
 
