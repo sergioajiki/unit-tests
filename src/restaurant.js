@@ -40,19 +40,57 @@
 
 // 4: Crie uma função `createMenu()` que, recebendo um objeto como parâmetro, retorna esse objeto no seguinte formato: 
 //  { fetchMenu: () => objetoPassadoPorParametro }.
+
+
+const menuDoDia2 = {
+  food: { 'coxinha': 3.90, 'sanduiche': 9.90 }, drink: { 'agua': 3.90, 'cerveja': 6.90 },
+};
 const fetchMenu = (objetoPassadoPorParametro) => objetoPassadoPorParametro;
+const pedido = () => {
+  const pegaPedido = [];
+  const valuesDeOPPP = Object.values(objetoPassadoPorParametro);
+  for (index in valuesDeOPPP) {
+    const sokeys = Object.keys(valuesDeOPPP[index]);
+    if (sokeys[index] === order) {
+      pegaPedido.push(sokeys[index])
+    } else {
+      'Item indisponível'
+    }
+  }
+  
+  // console.log(pegaPedido);
+  return pegaPedido;
+};
+// pedido(menuDoDia2, 'coxinha')
 const createMenu = (objetoPassadoPorParametro) => {
-    const objetoRetornado = {
-      fetchMenu: {},
-    };
+
+  const objetoRetornado = {
+    fetchMenu: {},
+  };
   Object.assign(objetoRetornado.fetchMenu, fetchMenu(objetoPassadoPorParametro));
   objetoRetornado.consumption = [];
-  console.log(objetoRetornado);
-  console.log(Object.keys(objetoRetornado));
-  console.log(Object.keys(objetoRetornado.fetchMenu));
+  objetoRetornado.order = pedido(order)
+  // console.log(objetoRetornado);
+  // console.log(Object.keys(objetoRetornado));
+  // console.log(Object.keys(objetoRetornado.fetchMenu));
+  console.log(objetoRetornado.consumption)
+  console.log(objetoRetornado)
   return objetoRetornado;
-  // return objetoRetornado;
 };
+
+// createMenu(menuDoDia2, 'cerveja');
+// createMenu({ food: {}, drink: {} }, 'bolo');
+
+// const cliente = createMenu()
+// cliente.order()
+
+
+
+
+
+
+
+
 // order: () => { 
 //         const items = Object.keys(objetoPassadoPorParametro.food);
 // },
@@ -61,12 +99,9 @@ const createMenu = (objetoPassadoPorParametro) => {
 // console.log(Object.keys(objetoPassadoPorParametro.food));
 // console.log(objetoRetornado)
 
-const menuDoDia2 = {
-  food: { coxinha: 3.90, sanduiche: 9.90 },
-  drink: { agua: 3.90, cerveja: 6.90 },
-};
-createMenu(menuDoDia2);
-createMenu({ food: {}, drink: {} });
+
+
+
 // Faça o item 5 no arquivo tests/restaurant.spec.js
 
 // 6: Adicione ao objeto retornado por `createMenu()` uma chave de nome `consumption` que, como valor inicial, tem um array vazio.

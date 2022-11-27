@@ -57,7 +57,6 @@ describe('10 - Implemente a função `createMenu`, bem como seus casos de teste'
     
     expect(createMenu(menuDoDia2).fetchMenu).toEqual(menuDoDia2);
 
-
     // 4: Faça a implementação do item 4 do README no arquivo src/restaurant.js.
 
     // 5: Verifique se 'objetoRetornado.consumption', após a criação do menu, retorna um array vazio.
@@ -68,7 +67,7 @@ describe('10 - Implemente a função `createMenu`, bem como seus casos de teste'
     
     // 7: Verifique se, ao chamar uma função associada à chave `order` no objeto retornado, passando uma string como parâmetro
     // - se a string existir nas chaves 'food' ou 'drink', deve ser adicionada ao array consumption
-
+    expect(createMenu(menuDoDia2, 'coxinha').consumption).toEqual('coxinha');
     
     // - senão, deve exibir a mensagem "Item indisponível" e não adicionar nada ao array
     // Ex: obj.order('coxinha') --> ['coxinha']
