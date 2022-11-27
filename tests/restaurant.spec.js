@@ -51,11 +51,11 @@ describe('10 - Implemente a função `createMenu`, bem como seus casos de teste'
 
     const menuDoDia = createMenu({ food: {}, drink: {} });
     const result = [ 'food', 'drink' ];
-    expect(Object.keys(menuDoDia.fetchMenu())).toEqual(result);
+    expect(Object.keys(menuDoDia.fetchMenu)).toEqual(result);
 
     // 3: Verifique se o menu passado pra função createMenu() é idêntico ao menu recuperado pela função 'objetoRetornado.fetchMenu()'.
     
-    expect(createMenu(menuDoDia2).fetchMenu()).toEqual(menuDoDia2);
+    expect(createMenu(menuDoDia2).fetchMenu).toEqual(menuDoDia2);
 
 
     // 4: Faça a implementação do item 4 do README no arquivo src/restaurant.js.
@@ -68,6 +68,8 @@ describe('10 - Implemente a função `createMenu`, bem como seus casos de teste'
     
     // 7: Verifique se, ao chamar uma função associada à chave `order` no objeto retornado, passando uma string como parâmetro
     // - se a string existir nas chaves 'food' ou 'drink', deve ser adicionada ao array consumption
+
+    
     // - senão, deve exibir a mensagem "Item indisponível" e não adicionar nada ao array
     // Ex: obj.order('coxinha') --> ['coxinha']
     // Ex: obj.order('picanha') --> Exibe "Item indisponível"
