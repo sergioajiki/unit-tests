@@ -41,116 +41,52 @@
 // 4: Crie uma função `createMenu()` que, recebendo um objeto como parâmetro, retorna esse objeto no seguinte formato: 
 //  { fetchMenu: () => objetoPassadoPorParametro }.
 
-
-
-
-// const pedido = (item) => {
-//   const pegaPedido = [];
-//   const valuesDeOPPP = Object.values(objetoPassadoPorParametro);
-//   // console.log(valuesDeOPPP)
-//   // console.log(item)
-//   for (index in valuesDeOPPP) {
-//     // console.log(valuesDeOPPP[index])
-//     const sokeys = Object.keys(valuesDeOPPP[index]);
-//     // console.log(sokeys)
-//     // console.log(item)
-//     if (sokeys[index] === item) {
-//       // console.log(sokeys[index])
-//       pegaPedido.push(sokeys[index])
-
-//     } else {
-//       'Item indisponível'
-//     }
-//   }
-//   console.log(pegaPedido)
-//   return pegaPedido;
-// }
-// const pedido = (objetoPassadoPorParametro,item) => {
-//   console.log(item)
-//   const pegaPedido = [];
-//   const valuesDeOPPP = Object.values(objetoPassadoPorParametro);
-//   console.log(valuesDeOPPP)
-//   for (index in valuesDeOPPP) {
-//     console.log(valuesDeOPPP[index])
-//     const sokeys = Object.keys(valuesDeOPPP[index]);
-//     console.log(sokeys)
-//     console.log(item)
-//     if (sokeys[index] === item) {
-//       pegaPedido.push(sokeys[index])
-//     } else {
-//       'Item indisponível'
-//     }
-//   }
-//   return pegaPedido;
-// };
-
-
 const fetchMenu = (objetoPassadoPorParametro) => objetoPassadoPorParametro;
+
 const createMenu = (objetoPassadoPorParametro) => {
   const objetoRetornado = {
     fetchMenu: {},
   };
   Object.assign(objetoRetornado.fetchMenu, fetchMenu(objetoPassadoPorParametro));
   objetoRetornado.consumption = [];
+  objetoRetornado.order = (item) => {
+    // console.log(item);
+    // const pegaPedido = [];
+    const valuesObjetoPassadoPorParametro = Object.values(objetoPassadoPorParametro);
+
+    for (index in valuesObjetoPassadoPorParametro) {
+      const soKeys = Object.keys(valuesObjetoPassadoPorParametro[index]);
+      
+      if (soKeys[index] === item) {
+        // pegaPedido.push(soKeys[index]);
+        objetoRetornado.consumption.push(soKeys[index])
+        console.log(objetoRetornado.consumption)
+        // console.log(pegaPedido)
+      } else {
+        'Item indisponível'
+      }
+    }
+    // console.log(pegaPedido);
+
+    // console.log(objetoRetornado.order)
+  };
+  //  pedido();  
+  // objetoRetornado.consumption = objetoRetornado.order
   // ????? e se a função não for colocada no inicio??????
-
-  // objetoRetornado.order = (item) => {
-  //   const pegaPedido = [];
-  //   const valuesDeOPPP = Object.values(objetoPassadoPorParametro);
-  //   // console.log(valuesDeOPPP)
-  //   // console.log(item)
-  //   for (index in valuesDeOPPP) {
-  //     // console.log(valuesDeOPPP[index])
-  //     const sokeys = Object.keys(valuesDeOPPP[index]);
-  //     // console.log(sokeys)
-  //     // console.log(item)
-  //     if (sokeys[index] === item) {
-  //       // console.log(sokeys[index])
-  //       pegaPedido.push(sokeys[index])
-
-  //     } else {
-  //       return 'Item indisponível'
-  //     }
-  //   }
-    // console.log(pegaPedido)
-  //   return pegaPedido;
-  // }
-  // Object.assign(objetoRetornado.order, pedido());
-  // objetoRetornado.consumption = objetoRetornado.order;
   console.log(objetoRetornado)
-  console.log(Object.keys(objetoRetornado))
   return objetoRetornado;
-};
-
+}
 const menuDoDia2 = {
   food: { 'coxinha': 3.90, 'sanduiche': 9.90 }, drink: { 'agua': 3.90, 'cerveja': 6.90 },
 };
-createMenu({ food: {}, drink: {} })
-createMenu(menuDoDia2)
+const cliente = createMenu(menuDoDia2);
+cliente.order('coxinha');
+cliente.order('coxinha');
+console.log(cliente.consumption)
+// createMenu({ food: {}, drink: {} })
+// createMenu(menuDoDia2)
 
-// const cliente = createMenu(menuDoDia2)
-// cliente.order('coxinha')
-
-// createMenu({ food: {}, drink: {} }, 'bolo');
-
-
-
-
-
-
-
-
-
-
-// order: () => { 
-//         const items = Object.keys(objetoPassadoPorParametro.food);
-// },
-
-// console.log(pedido);
-// console.log(Object.keys(objetoPassadoPorParametro.food));
-// console.log(objetoRetornado)
-
-
+// console.log(objetoRetornado);
 
 
 // Faça o item 5 no arquivo tests/restaurant.spec.js
