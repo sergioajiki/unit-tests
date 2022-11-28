@@ -42,8 +42,29 @@
 //  { fetchMenu: () => objetoPassadoPorParametro }.
 
 
-const fetchMenu = (objetoPassadoPorParametro) => objetoPassadoPorParametro;
 
+
+// const pedido = (item) => {
+//   const pegaPedido = [];
+//   const valuesDeOPPP = Object.values(objetoPassadoPorParametro);
+//   // console.log(valuesDeOPPP)
+//   // console.log(item)
+//   for (index in valuesDeOPPP) {
+//     // console.log(valuesDeOPPP[index])
+//     const sokeys = Object.keys(valuesDeOPPP[index]);
+//     // console.log(sokeys)
+//     // console.log(item)
+//     if (sokeys[index] === item) {
+//       // console.log(sokeys[index])
+//       pegaPedido.push(sokeys[index])
+
+//     } else {
+//       'Item indisponível'
+//     }
+//   }
+//   console.log(pegaPedido)
+//   return pegaPedido;
+// }
 // const pedido = (objetoPassadoPorParametro,item) => {
 //   console.log(item)
 //   const pegaPedido = [];
@@ -63,45 +84,52 @@ const fetchMenu = (objetoPassadoPorParametro) => objetoPassadoPorParametro;
 //   return pegaPedido;
 // };
 
+
+const fetchMenu = (objetoPassadoPorParametro) => objetoPassadoPorParametro;
 const createMenu = (objetoPassadoPorParametro) => {
   const objetoRetornado = {
     fetchMenu: {},
   };
   Object.assign(objetoRetornado.fetchMenu, fetchMenu(objetoPassadoPorParametro));
   objetoRetornado.consumption = [];
-  objetoRetornado.order = (item) => {
-    const pegaPedido = [];
-    const valuesDeOPPP = Object.values(objetoPassadoPorParametro);
-    // console.log(valuesDeOPPP)
-    // console.log(item)
-    for (index in valuesDeOPPP) {
-      // console.log(valuesDeOPPP[index])
-      const sokeys = Object.keys(valuesDeOPPP[index]);
-      // console.log(sokeys)
-      // console.log(item)
-      if (sokeys[index] === item) {
-        // console.log(sokeys[index])
-        pegaPedido.push(sokeys[index])
+  // ????? e se a função não for colocada no inicio??????
 
-      } else {
-        'Item indisponível'
-      }
-    }
-    console.log(pegaPedido)
-    return pegaPedido;
-  }
-  objetoRetornado.consumption = objetoRetornado.order;
+  // objetoRetornado.order = (item) => {
+  //   const pegaPedido = [];
+  //   const valuesDeOPPP = Object.values(objetoPassadoPorParametro);
+  //   // console.log(valuesDeOPPP)
+  //   // console.log(item)
+  //   for (index in valuesDeOPPP) {
+  //     // console.log(valuesDeOPPP[index])
+  //     const sokeys = Object.keys(valuesDeOPPP[index]);
+  //     // console.log(sokeys)
+  //     // console.log(item)
+  //     if (sokeys[index] === item) {
+  //       // console.log(sokeys[index])
+  //       pegaPedido.push(sokeys[index])
 
+  //     } else {
+  //       return 'Item indisponível'
+  //     }
+  //   }
+    // console.log(pegaPedido)
+  //   return pegaPedido;
+  // }
+  // Object.assign(objetoRetornado.order, pedido());
+  // objetoRetornado.consumption = objetoRetornado.order;
   console.log(objetoRetornado)
-
+  console.log(Object.keys(objetoRetornado))
   return objetoRetornado;
 };
+
 const menuDoDia2 = {
   food: { 'coxinha': 3.90, 'sanduiche': 9.90 }, drink: { 'agua': 3.90, 'cerveja': 6.90 },
 };
-// createMenu(menuDoDia2, 'coxinha');
-const cliente = createMenu(menuDoDia2)
-cliente.order('coxinha')
+createMenu({ food: {}, drink: {} })
+createMenu(menuDoDia2)
+
+// const cliente = createMenu(menuDoDia2)
+// cliente.order('coxinha')
 
 // createMenu({ food: {}, drink: {} }, 'bolo');
 
@@ -145,4 +173,4 @@ cliente.order('coxinha')
 // - retornará o valor somado acrescido de 10%.
 // DICA: para isso, você precisará percorrer tanto o objeto da chave `food` quanto o objeto da chave `drink`.
 
-// module.exports = createMenu;
+module.exports = createMenu;
