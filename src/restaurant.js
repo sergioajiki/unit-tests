@@ -50,43 +50,32 @@ const createMenu = (objetoPassadoPorParametro) => {
   Object.assign(objetoRetornado.fetchMenu, fetchMenu(objetoPassadoPorParametro));
   objetoRetornado.consumption = [];
   objetoRetornado.order = (item) => {
-    // console.log(item);
-    // const pegaPedido = [];
     const valuesObjetoPassadoPorParametro = Object.values(objetoPassadoPorParametro);
-        for (index in valuesObjetoPassadoPorParametro) {
+    for (index in valuesObjetoPassadoPorParametro) {
       const soKeys = Object.keys(valuesObjetoPassadoPorParametro[index]);
       for (i in soKeys) {
-      if (soKeys[i] === item) {
-        // pegaPedido.push(soKeys[index]);
-        objetoRetornado.consumption.push(soKeys[i])
-        console.log(objetoRetornado.consumption)
-        // console.log(pegaPedido)
-      } else {
-        'Item indisponível'
+        if (soKeys[i] === item) {
+          objetoRetornado.consumption.push(soKeys[i])
+        }
       }
     }
-  }
-    // console.log(pegaPedido);
 
-    // console.log(objetoRetornado.order)
+    return 'Item indisponível'
+    return console.log('Item indisponível');
   };
-  //  pedido();  
-  // objetoRetornado.consumption = objetoRetornado.order
-  // ????? e se a função não for colocada no inicio??????
-  console.log(objetoRetornado)
+  // console.log(objetoRetornado)
   return objetoRetornado;
 }
 const menuDoDia2 = {
   food: { 'coxinha': 3.90, 'sanduiche': 9.90 }, drink: { 'agua': 3.90, 'cerveja': 6.90 },
 };
 const cliente = createMenu(menuDoDia2);
-cliente.order('sanduiche');
-// cliente.order('coxinha');
+cliente.order('agua');
+cliente.order('agua');
+cliente.order('agua');
+// cliente.order('sanduiche');
 console.log(cliente.consumption)
 // createMenu({ food: {}, drink: {} })
-// createMenu(menuDoDia2)
-
-// console.log(objetoRetornado);
 
 
 // Faça o item 5 no arquivo tests/restaurant.spec.js
