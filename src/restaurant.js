@@ -53,19 +53,19 @@ const createMenu = (objetoPassadoPorParametro) => {
     // console.log(item);
     // const pegaPedido = [];
     const valuesObjetoPassadoPorParametro = Object.values(objetoPassadoPorParametro);
-
-    for (index in valuesObjetoPassadoPorParametro) {
+        for (index in valuesObjetoPassadoPorParametro) {
       const soKeys = Object.keys(valuesObjetoPassadoPorParametro[index]);
-      
-      if (soKeys[index] === item) {
+      for (i in soKeys) {
+      if (soKeys[i] === item) {
         // pegaPedido.push(soKeys[index]);
-        objetoRetornado.consumption.push(soKeys[index])
+        objetoRetornado.consumption.push(soKeys[i])
         console.log(objetoRetornado.consumption)
         // console.log(pegaPedido)
       } else {
         'Item indisponível'
       }
     }
+  }
     // console.log(pegaPedido);
 
     // console.log(objetoRetornado.order)
@@ -80,8 +80,8 @@ const menuDoDia2 = {
   food: { 'coxinha': 3.90, 'sanduiche': 9.90 }, drink: { 'agua': 3.90, 'cerveja': 6.90 },
 };
 const cliente = createMenu(menuDoDia2);
-cliente.order('coxinha');
-cliente.order('coxinha');
+cliente.order('sanduiche');
+// cliente.order('coxinha');
 console.log(cliente.consumption)
 // createMenu({ food: {}, drink: {} })
 // createMenu(menuDoDia2)
