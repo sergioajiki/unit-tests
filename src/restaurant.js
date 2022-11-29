@@ -59,22 +59,55 @@ const createMenu = (objetoPassadoPorParametro) => {
         }
       }
     }
-
     return 'Item indisponível'
-    return console.log('Item indisponível');
   };
+  objetoRetornado.pay = () => {
+    let soma = 0;
+    const comanda = cliente.consumption;
+    const tabelaDePreco = Object.values(fetchMenu(objetoPassadoPorParametro));
+    for (index in tabelaDePreco) {
+      // console.log(tabelaDePreco[index])
+      // console.log(Object.keys(tabelaDePreco[index]))
+      // console.log(Object.values(tabelaDePreco[index]))
+      // console.log(Object.entries(tabelaDePreco[index]))
+      const soKeys = Object.keys(tabelaDePreco[index])
+      // console.log(soma)
+      for (i in soKeys) {
+        for (item in comanda) {
+          // console.log(comanda[item])
+          // console.log(soKeys[i])
+          if (comanda[item] === soKeys[i]) {
+            soma = soma + Object.values(tabelaDePreco[i])
+            console.log(typeof(Object.values(tabelaDePreco[i])))
+            console.log(soma)
+            return
+            //  soma = soma + Object.values(tabelaDePreco[i])
+          }
+        }
+        // console.log(Object.keys(tabelaDePreco[index]))        
+        // console.log(comanda[i])
+        // console.log(Object.values(soKeys[index]))        
+        // console.log(soKeys[i])
+
+      }
+    }
+    // soma dos itens de consumption
+  }
   // console.log(objetoRetornado)
   return objetoRetornado;
 }
 const menuDoDia2 = {
-  food: { 'coxinha': 3.90, 'sanduiche': 9.90 }, drink: { 'agua': 3.90, 'cerveja': 6.90 },
+  food: { 'coxinha': 2, 'sanduiche': 10 }, drink: { 'agua': 4, 'cerveja': 7 },
 };
 const cliente = createMenu(menuDoDia2);
 cliente.order('agua');
-cliente.order('agua');
-cliente.order('agua');
+cliente.order('coxinha');
+// cliente.order('cerveja');
+cliente.pay();
+
 // cliente.order('sanduiche');
-console.log(cliente.consumption)
+// console.log(cliente.consumption)
+
 // createMenu({ food: {}, drink: {} })
 
 

@@ -67,17 +67,20 @@ describe('10 - Implemente a função `createMenu`, bem como seus casos de teste'
 
     // 7: Verifique se, ao chamar uma função associada à chave `order` no objeto retornado, passando uma string como parâmetro
     // - se a string existir nas chaves 'food' ou 'drink', deve ser adicionada ao array consumption
+    // - senão, deve exibir a mensagem "Item indisponível" e não adicionar nada ao array
+    // Ex: obj.order('coxinha') --> ['coxinha']
+
     const cliente = createMenu(menuDoDia2);
     cliente.order('coxinha')
     expect(cliente.consumption).toEqual(['coxinha']);
 
+    // Ex: obj.order('picanha') --> Exibe "Item indisponível"
+
     const cliente2 = createMenu(menuDoDia2);
     cliente2.order('picanha')
     expect(cliente2.order('picanha')).toBe('Item indisponível');
-        // - senão, deve exibir a mensagem "Item indisponível" e não adicionar nada ao array
-    // Ex: obj.order('coxinha') --> ['coxinha']
-    // Ex: obj.order('picanha') --> Exibe "Item indisponível"
-
+    expect(cliente2.consumption).toEqual([]);
+    
     // 8: Faça a implementação do item 8 do README no arquivo src/restaurant.js.
 
     // 9: Verifique se, ao adicionar três pedidos em sequência, dentre bebidas e comidas, o array `objetoRetornado.consumption` contém os itens pedidos.
@@ -85,14 +88,14 @@ describe('10 - Implemente a função `createMenu`, bem como seus casos de teste'
     cliente3.order('coxinha');
     cliente3.order('sanduiche');
     cliente3.order('agua');
-    expect(cliente3.consumption).toEqual([ 'coxinha', 'sanduiche', 'agua' ]);
+    expect(cliente3.consumption).toEqual(['coxinha', 'sanduiche', 'agua']);
 
     // 10: Verifique se a função `order` aceita que pedidos repetidos sejam acrescidos a `consumption`.
     const cliente4 = createMenu(menuDoDia2);
     cliente4.order('agua');
     cliente4.order('agua');
     cliente4.order('agua');
-    expect(cliente4.consumption).toEqual([ 'agua', 'agua', 'agua' ]);
+    expect(cliente4.consumption).toEqual(['agua', 'agua', 'agua']);
 
     // 11: Verifique se, ao chamar `objetoRetornado.pay()`, retorna-se a soma dos preços de tudo que foi pedido, acrescido de 10%, conforme registrado em `objetoRetornado.consumption`.
 
