@@ -62,53 +62,78 @@ const createMenu = (objetoPassadoPorParametro) => {
     return 'Item indisponível'
   };
   objetoRetornado.pay = () => {
-    let soma = 0;
+    let contaAPagar = 0;
     const comanda = cliente.consumption;
     const tabelaDePreco = Object.values(fetchMenu(objetoPassadoPorParametro));
-    for (index in tabelaDePreco) {
-      // console.log(tabelaDePreco[index])
-      // console.log(Object.keys(tabelaDePreco[index]))
-      // console.log(Object.values(tabelaDePreco[index]))
-      // console.log(Object.entries(tabelaDePreco[index]))
-      const soKeys = Object.keys(tabelaDePreco[index])
-      // console.log(soma)
-      for (i in soKeys) {
-        for (item in comanda) {
-          // console.log(comanda[item])
-          // console.log(soKeys[i])
-          if (comanda[item] === soKeys[i]) {
-            soma = soma + Object.values(tabelaDePreco[i])
-            console.log(typeof(Object.values(tabelaDePreco[i])))
-            console.log(soma)
-            return
-            //  soma = soma + Object.values(tabelaDePreco[i])
+    for (let index = 0; index < tabelaDePreco.length; index += 1) {
+      const categoria = tabelaDePreco[index]
+      // console.log(categoria)
+      // console.log(comanda)
+      for (let item in categoria) {
+        // console.log(categoria)
+        for (let i = 0; i < comanda.length; i += 1) {
+          // console.log(item)
+          // console.log(comanda[i])
+          // console.log(categoria[item])
+          if (comanda[i] === item) {
+            contaAPagar = contaAPagar + categoria[item]
           }
+          console.log(contaAPagar)
         }
-        // console.log(Object.keys(tabelaDePreco[index]))        
-        // console.log(comanda[i])
-        // console.log(Object.values(soKeys[index]))        
-        // console.log(soKeys[i])
-
+        // console.log(contaAPagar)
+        // console.log(comanda)
+        // console.log(categoria[item])
       }
+      // console.log(contaAPagar)
     }
-    // soma dos itens de consumption
   }
-  // console.log(objetoRetornado)
+  // console.log(tabelaDePreco)
+  // console.log(comanda)
+  // console.log(Object.keys(tabelaDePreco)
+  // console.log(Object.keys(tabelaDePreco[index]))
+  // console.log(Object.keys(tabelaDePreco))
+  // console.log(Object.values(tabelaDePreco))
+  // console.log(Object.entries(tabelaDePreco))
+
   return objetoRetornado;
 }
 const menuDoDia2 = {
   food: { 'coxinha': 2, 'sanduiche': 10 }, drink: { 'agua': 4, 'cerveja': 7 },
 };
 const cliente = createMenu(menuDoDia2);
-cliente.order('agua');
 cliente.order('coxinha');
-// cliente.order('cerveja');
+cliente.order('sanduiche');
+cliente.order('agua');
+cliente.order('cerveja');
 cliente.pay();
-
-// cliente.order('sanduiche');
 // console.log(cliente.consumption)
+createMenu({ food: {}, drink: {} })
 
-// createMenu({ food: {}, drink: {} })
+// const soKeys = Object.keys(tabelaDePreco[index])
+// console.log(soma)
+// for (i in soKeys) {
+//   for (item in comanda) {
+//     // console.log(comanda[item])
+//     // console.log(soKeys[i])
+//     if (comanda[item] === soKeys[i]) {
+//       soma = soma + (Object.values(tabelaDePreco[i])[i])
+//       // console.log(typeof(Object.values(tabelaDePreco[i]))[i])
+//       console.log(Object.values(tabelaDePreco[i])[i])
+//  soma = soma + Object.values(tabelaDePreco[i])
+
+// console.log(soma)
+
+// console.log(Object.keys(tabelaDePreco[index]))        
+// console.log(comanda[i])
+// console.log(Object.values(soKeys[index]))        
+// console.log(soKeys[i])
+
+// }
+// soma dos itens de consumption
+// }
+// console.log(objetoRetornado)
+
+// }
 
 
 // Faça o item 5 no arquivo tests/restaurant.spec.js
