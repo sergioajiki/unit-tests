@@ -75,9 +75,8 @@ describe('10 - Implemente a função `createMenu`, bem como seus casos de teste'
     expect(cliente.consumption).toEqual(['coxinha']);
 
     // Ex: obj.order('picanha') --> Exibe "Item indisponível"
-
     const cliente2 = createMenu(menuDoDia2);
-    cliente2.order('picanha')
+    // cliente2.order('picanha')
     expect(cliente2.order('picanha')).toBe('Item indisponível');
     expect(cliente2.consumption).toEqual([]);
     
@@ -98,6 +97,12 @@ describe('10 - Implemente a função `createMenu`, bem como seus casos de teste'
     expect(cliente4.consumption).toEqual(['agua', 'agua', 'agua']);
 
     // 11: Verifique se, ao chamar `objetoRetornado.pay()`, retorna-se a soma dos preços de tudo que foi pedido, acrescido de 10%, conforme registrado em `objetoRetornado.consumption`.
+    const cliente5 = createMenu(menuDoDia2);
+    cliente3.order('coxinha');
+    cliente3.order('sanduiche');
+    cliente3.order('agua');
+    expect(cliente5.pay).toBe(22,77);
+
 
     // 12: Faça a implementação do item 12 do README no arquivo src/restaurant.js.
 

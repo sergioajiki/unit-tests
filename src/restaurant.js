@@ -51,61 +51,49 @@ const createMenu = (objetoPassadoPorParametro) => {
   objetoRetornado.order = (item) => {
     const foods = objetoPassadoPorParametro.food;
     const drinks = objetoPassadoPorParametro.drink;
+    // console.log(foods)
+    // console.log(drinks)
     if (item in foods || item in drinks) {
       objetoRetornado.consumption.push(item);
     } else {
-      console.log('Item indisponível');
+      console.log('Item indisponível')
+      return 'Item indisponível';
     }
-      // console.log(item)
-    // for (let food in foods) {
-    //   if (food === item) {
-    //     objetoRetornado.consumption.push(item);
-    //   }
-    // }
-    //   for (let drink in drinks) {
-    //     if (drink === item) {
-    //       objetoRetornado.consumption.push(item);
-    //     }
-    //   }
   };
   objetoRetornado.pay = () => {
     let contaAPagar = 0;
     const comanda = objetoRetornado.consumption;
+    // console.log(comanda)
     const tabelaDePreco = Object.values(fetchMenu(objetoPassadoPorParametro));
     for (let index = 0; index < tabelaDePreco.length; index += 1) {
       const categoria = tabelaDePreco[index];
       for (let item in categoria) {
         for (let i = 0; i < comanda.length; i += 1) {
-          // console.log(item)
-          // console.log(comanda[i])
-          // console.log(categoria[item])
-          if (comanda[i] === item) {
+              if (comanda[i] === item) {
             contaAPagar += categoria[item];
-            // contaAPagar += contaAPagar / 10;
-          }
-          // console.log(contaAPagar.toFixed(2));
-        }
-        // console.log(contaAPagar)
-        // console.log(comanda)
-        // console.log(categoria[item])
+                      }
+             }
       }
     }
     contaAPagar += contaAPagar / 10;
-    console.log(contaAPagar);
+    console.log(contaAPagar.toFixed(2));
   };
+  // console.log(objetoRetornado)
   return objetoRetornado;
 };
-const menuDoDia2 = {
-  food: { coxinha: 3.9, sanduiche: 2.9 }, drink: { agua: 1.99, cerveja: 18.5 },
-};
-const cliente = createMenu(menuDoDia2);
-cliente.order('coxinha');
+// const menuDoDia2 = {
+//   food: { coxinha: 3.90, sanduiche: 9.90}, drink: { agua: 3.90, cerveja: 6.90 },
+// };
+// const cliente = createMenu(menuDoDia2);
+// cliente.order('picanha');
+// cliente.order('bolo');
+// cliente.order('coxinha');
 // cliente.order('sanduiche');
 // cliente.order('agua');
 // cliente.order('cerveja');
-cliente.order('bolo');
-// console.log(cliente.order('bolo'))
-// console.log(cliente.order('coxinha'))
+// cliente.order('agua');
+// cliente.order('agua');
+// cliente.order('agua');
 // cliente.pay();
 // createMenu({ food: {}, drink: {} });
 
