@@ -53,10 +53,11 @@ const createMenu = (objetoPassadoPorParametro) => {
     const drinks = objetoPassadoPorParametro.drink;
     // console.log(foods)
     // console.log(drinks)
-    if (item in foods || item in drinks) {
+    if (item in foods || item in drinks) {      
       objetoRetornado.consumption.push(item);
     } else {
-      console.log('Item indisponível')
+      // throw new Error('Item indisponível')
+      // console.log('Item indisponível')
       return 'Item indisponível';
     }
   };
@@ -77,6 +78,7 @@ const createMenu = (objetoPassadoPorParametro) => {
     }
     contaAPagar += contaAPagar / 10;
     console.log(contaAPagar.toFixed(2));
+    return contaAPagar
   };
   // console.log(objetoRetornado)
   return objetoRetornado;

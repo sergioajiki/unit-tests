@@ -35,7 +35,7 @@ const createMenu = require('../src/restaurant');
 */
 const menuDoDia2 = {
   food: { 'coxinha': 3.90, 'sanduiche': 9.90 },
-  drinks: { 'agua': 3.90, 'cerveja': 6.90 }
+  drink: { 'agua': 3.90, 'cerveja': 6.90 }
 };
 
 describe('10 - Implemente a função `createMenu`, bem como seus casos de teste', () => {
@@ -78,8 +78,9 @@ describe('10 - Implemente a função `createMenu`, bem como seus casos de teste'
     const cliente2 = createMenu(menuDoDia2);
     // cliente2.order('picanha')
     expect(cliente2.order('picanha')).toBe('Item indisponível');
+
     expect(cliente2.consumption).toEqual([]);
-    
+
     // 8: Faça a implementação do item 8 do README no arquivo src/restaurant.js.
 
     // 9: Verifique se, ao adicionar três pedidos em sequência, dentre bebidas e comidas, o array `objetoRetornado.consumption` contém os itens pedidos.
@@ -98,12 +99,22 @@ describe('10 - Implemente a função `createMenu`, bem como seus casos de teste'
 
     // 11: Verifique se, ao chamar `objetoRetornado.pay()`, retorna-se a soma dos preços de tudo que foi pedido, acrescido de 10%, conforme registrado em `objetoRetornado.consumption`.
     const cliente5 = createMenu(menuDoDia2);
-    cliente3.order('coxinha');
-    cliente3.order('sanduiche');
-    cliente3.order('agua');
-    expect(cliente5.pay).toBe(22,77);
-
-
+    cliente5.order('coxinha')
+    expect(cliente5.pay()).toBe(4.29);
+    const cliente6 = createMenu(menuDoDia2);
+    cliente6.order('coxinha');
+    cliente6.order('sanduiche');
+    cliente6.order('agua');
+    expect(cliente6.pay()).toBe(19.47);
+    const cliente7 = createMenu(menuDoDia2);
+    cliente7.order('agua');
+    cliente7.order('agua');
+    cliente7.order('agua');
+    expect(cliente7.pay()).toBe(12.87);
+    const cliente8 = createMenu(menuDoDia2);
+    cliente8.order('coxinha')
+    cliente8.order('picanha')
+    expect(cliente5.pay()).toBe(4.29);
     // 12: Faça a implementação do item 12 do README no arquivo src/restaurant.js.
 
   });
