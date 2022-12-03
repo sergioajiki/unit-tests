@@ -42,7 +42,6 @@
 //  { fetchMenu: () => objetoPassadoPorParametro }.
 
 const fetchMenu = (objetoPassadoPorParametro) => objetoPassadoPorParametro;
-
 const createMenu = (objetoPassadoPorParametro) => {
   const objetoRetornado = {
     fetchMenu: {},
@@ -50,88 +49,65 @@ const createMenu = (objetoPassadoPorParametro) => {
   Object.assign(objetoRetornado.fetchMenu, fetchMenu(objetoPassadoPorParametro));
   objetoRetornado.consumption = [];
   objetoRetornado.order = (item) => {
-    const valuesObjetoPassadoPorParametro = Object.values(objetoPassadoPorParametro);
-    for (let index in valuesObjetoPassadoPorParametro) {
-      const soKeys = Object.keys(valuesObjetoPassadoPorParametro[index]);
-      for (let i in soKeys) {
-        if (soKeys[i] === item) {
-          objetoRetornado.consumption.push(soKeys[i]);
-        }
-      }
+    const foods = objetoPassadoPorParametro.food;
+    const drinks = objetoPassadoPorParametro.drink;
+    if (item in foods || item in drinks) {
+      objetoRetornado.consumption.push(item);
+    } else {
+      console.log('Item indisponível');
     }
-    return 'Item indisponível';
+      // console.log(item)
+    // for (let food in foods) {
+    //   if (food === item) {
+    //     objetoRetornado.consumption.push(item);
+    //   }
+    // }
+    //   for (let drink in drinks) {
+    //     if (drink === item) {
+    //       objetoRetornado.consumption.push(item);
+    //     }
+    //   }
   };
   objetoRetornado.pay = () => {
     let contaAPagar = 0;
-    const comanda = cliente.consumption;
+    const comanda = objetoRetornado.consumption;
     const tabelaDePreco = Object.values(fetchMenu(objetoPassadoPorParametro));
     for (let index = 0; index < tabelaDePreco.length; index += 1) {
       const categoria = tabelaDePreco[index];
-      // console.log(categoria)
-      // console.log(comanda)
       for (let item in categoria) {
-        // console.log(categoria)
         for (let i = 0; i < comanda.length; i += 1) {
           // console.log(item)
           // console.log(comanda[i])
           // console.log(categoria[item])
           if (comanda[i] === item) {
-            contaAPagar = contaAPagar + categoria[item];
+            contaAPagar += categoria[item];
+            // contaAPagar += contaAPagar / 10;
           }
-          console.log(contaAPagar);
+          // console.log(contaAPagar.toFixed(2));
         }
         // console.log(contaAPagar)
         // console.log(comanda)
         // console.log(categoria[item])
       }
-      // console.log(contaAPagar)
     }
+    contaAPagar += contaAPagar / 10;
+    console.log(contaAPagar);
   };
-  // console.log(tabelaDePreco)
-  // console.log(comanda)
-  // console.log(Object.keys(tabelaDePreco)
-  // console.log(Object.keys(tabelaDePreco[index]))
-  // console.log(Object.keys(tabelaDePreco))
-  // console.log(Object.values(tabelaDePreco))
-  // console.log(Object.entries(tabelaDePreco))
-
   return objetoRetornado;
 };
 const menuDoDia2 = {
-  food: { coxinha: 2, sanduiche: 10 }, drink: { agua: 4, cerveja: 7 },
+  food: { coxinha: 3.9, sanduiche: 2.9 }, drink: { agua: 1.99, cerveja: 18.5 },
 };
 const cliente = createMenu(menuDoDia2);
 cliente.order('coxinha');
-cliente.order('sanduiche');
-cliente.order('agua');
-cliente.order('cerveja');
-cliente.pay();
-// console.log(cliente.consumption)
-createMenu({ food: {}, drink: {} });
-
-// const soKeys = Object.keys(tabelaDePreco[index])
-// console.log(soma)
-// for (i in soKeys) {
-//   for (item in comanda) {
-//     // console.log(comanda[item])
-//     // console.log(soKeys[i])
-//     if (comanda[item] === soKeys[i]) {
-//       soma = soma + (Object.values(tabelaDePreco[i])[i])
-//       // console.log(typeof(Object.values(tabelaDePreco[i]))[i])
-//       console.log(Object.values(tabelaDePreco[i])[i])
-//  soma = soma + Object.values(tabelaDePreco[i])
-
-// console.log(soma)
-
-// console.log(Object.keys(tabelaDePreco[index]))        
-// console.log(comanda[i])
-// console.log(Object.values(soKeys[index]))        
-// console.log(soKeys[i])
-
-// }
-// soma dos itens de consumption
-// }
-// console.log(objetoRetornado)
+// cliente.order('sanduiche');
+// cliente.order('agua');
+// cliente.order('cerveja');
+cliente.order('bolo');
+// console.log(cliente.order('bolo'))
+// console.log(cliente.order('coxinha'))
+// cliente.pay();
+// createMenu({ food: {}, drink: {} });
 
 // Faça o item 5 no arquivo tests/restaurant.spec.js
 
