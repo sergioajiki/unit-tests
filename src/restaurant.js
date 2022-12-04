@@ -51,52 +51,71 @@ const createMenu = (objetoPassadoPorParametro) => {
   objetoRetornado.order = (item) => {
     const foods = objetoPassadoPorParametro.food;
     const drinks = objetoPassadoPorParametro.drink;
-    // console.log(foods)
-    // console.log(drinks)
-    if (item in foods || item in drinks) {      
+    if (item in foods || item in drinks) {
       objetoRetornado.consumption.push(item);
     } else {
-      // throw new Error('Item indisponível')
-      // console.log('Item indisponível')
       return 'Item indisponível';
     }
   };
   objetoRetornado.pay = () => {
     let contaAPagar = 0;
     const comanda = objetoRetornado.consumption;
-    // console.log(comanda)
     const tabelaDePreco = Object.values(fetchMenu(objetoPassadoPorParametro));
-    for (let index = 0; index < tabelaDePreco.length; index += 1) {
-      const categoria = tabelaDePreco[index];
-      for (let item in categoria) {
-        for (let i = 0; i < comanda.length; i += 1) {
-              if (comanda[i] === item) {
-            contaAPagar += categoria[item];
-                      }
-             }
+    // console.log(tabelaDePreco)
+    // const foods = objetoPassadoPorParametro.food;
+    // const drinks = objetoPassadoPorParametro.drink;
+    // console.log(foods)
+    // console.log(drinks)
+    // console.log(comanda)
+    comanda.forEach((pedidoDaComanda) => {
+        console.log(pedidoDaComanda);
+      for (let index in tabelaDePreco) {
+        const itemDoMenu = tabelaDePreco[index];
+        // console.log(categoria)
+        for (let key in itemDoMenu) {
+          console.log(itemDoMenu);
+          if (pedidoDaComanda === key) {
+            contaAPagar += itemDoMenu[key];
+          }
+
+          // console.log(itemDoMenu)
+          // console.log(key)
+          // console.log(itemDoMenu[key])
+        }
       }
-    }
+console.log(contaAPagar);
+    });
+    // for (let index = 0; index < tabelaDePreco.length; index += 1) {
+    //   const categoria = tabelaDePreco[index];
+    //   for (let item in categoria) {
+    //     for (let i = 0; i < comanda.length; i += 1) {
+    //       if (comanda[i] === item) {
+    //         contaAPagar += categoria[item];
+    //       }
+
+    //     }
+    //   }
+    // }
     contaAPagar += contaAPagar / 10;
-    console.log(contaAPagar.toFixed(2));
-    return contaAPagar
+    console.log(parseFloat(contaAPagar.toFixed(2)));
+    return parseFloat(contaAPagar.toFixed(2));
   };
-  // console.log(objetoRetornado)
   return objetoRetornado;
 };
-// const menuDoDia2 = {
-//   food: { coxinha: 3.90, sanduiche: 9.90}, drink: { agua: 3.90, cerveja: 6.90 },
-// };
-// const cliente = createMenu(menuDoDia2);
-// cliente.order('picanha');
-// cliente.order('bolo');
-// cliente.order('coxinha');
-// cliente.order('sanduiche');
-// cliente.order('agua');
-// cliente.order('cerveja');
-// cliente.order('agua');
-// cliente.order('agua');
-// cliente.order('agua');
-// cliente.pay();
+const menuDoDia2 = {
+  food: { coxinha: 3.90, sanduiche: 9.90 }, drink: { agua: 3.90, cerveja: 6.90 },
+};
+const cliente = createMenu(menuDoDia2);
+cliente.order('picanha');
+cliente.order('bolo');
+cliente.order('coxinha');
+cliente.order('sanduiche');
+cliente.order('agua');
+cliente.order('cerveja');
+cliente.order('agua');
+cliente.order('agua');
+cliente.order('agua');
+cliente.pay();
 // createMenu({ food: {}, drink: {} });
 
 // Faça o item 5 no arquivo tests/restaurant.spec.js
