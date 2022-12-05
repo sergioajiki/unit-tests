@@ -51,6 +51,8 @@ const createMenu = (objetoPassadoPorParametro) => {
   objetoRetornado.order = (item) => {
     const foods = objetoPassadoPorParametro.food;
     const drinks = objetoPassadoPorParametro.drink;
+    // console.log(foods)
+    // console.log(drinks)
     if (item in foods || item in drinks) {
       objetoRetornado.consumption.push(item);
     } else {
@@ -58,33 +60,47 @@ const createMenu = (objetoPassadoPorParametro) => {
     }
   };
   objetoRetornado.pay = () => {
-    let contaAPagar = 0;
+    let contaAPagar = 0
+    let somaFood = 0;
+    let somaDrink = 0;
     const comanda = objetoRetornado.consumption;
     const tabelaDePreco = Object.values(fetchMenu(objetoPassadoPorParametro));
-    // console.log(tabelaDePreco)
-    // const foods = objetoPassadoPorParametro.food;
-    // const drinks = objetoPassadoPorParametro.drink;
-    // console.log(foods)
-    // console.log(drinks)
-    // console.log(comanda)
+    const foods = objetoPassadoPorParametro.food;
+    const drinks = objetoPassadoPorParametro.drink;
     comanda.forEach((pedidoDaComanda) => {
-        console.log(pedidoDaComanda);
-      for (let index in tabelaDePreco) {
-        const itemDoMenu = tabelaDePreco[index];
-        // console.log(categoria)
-        for (let key in itemDoMenu) {
-          console.log(itemDoMenu);
-          if (pedidoDaComanda === key) {
-            contaAPagar += itemDoMenu[key];
-          }
-
-          // console.log(itemDoMenu)
-          // console.log(key)
-          // console.log(itemDoMenu[key])
-        }
+      // const somaFoods = () => {
+      for (let key in foods) {
+        // console.log(foods)
+        // console.log(key)
+        // console.log(foods[key])
+        if (pedidoDaComanda === key)
+          somaFood += foods[key]
+        // console.log(somaFood)
       }
-console.log(contaAPagar);
+      for (let key in drinks) {
+        if (pedidoDaComanda === key)
+          somaDrink += drinks[key]
+      }
     });
+    contaAPagar = somaFood + somaDrink
+
+    // for (let index in tabelaDePreco) {
+    //   // console.log(index)
+    //   const itemDoMenu = tabelaDePreco[index];
+    //   console.log(tabelaDePreco[index])
+    //   // console.log(categoria)
+    //   for (let key in itemDoMenu) {
+    //     // console.log(itemDoMenu);
+    //     if (pedidoDaComanda === key) {
+    //      contaAPagar += itemDoMenu[key];
+    //     //  console.log(pedidoDaComanda);
+    //     }
+    //   }
+    // }
+
+
+    // console.log(contaAPagar);
+
     // for (let index = 0; index < tabelaDePreco.length; index += 1) {
     //   const categoria = tabelaDePreco[index];
     //   for (let item in categoria) {
