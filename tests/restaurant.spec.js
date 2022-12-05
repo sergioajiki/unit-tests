@@ -114,7 +114,7 @@ describe('10 - Implemente a função `createMenu`, bem como seus casos de teste'
     const cliente8 = createMenu(menuDoDia2);
     cliente8.order('coxinha')
     cliente8.order('picanha')
-    expect(cliente5.pay()).toBe(4.29);
+    expect(cliente8.pay()).toBe(4.29);
     // 12: Faça a implementação do item 12 do README no arquivo src/restaurant.js.
   });
 });
